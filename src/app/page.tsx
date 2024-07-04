@@ -7,10 +7,10 @@ export default function Home() {
     <div className={styles.wrapper}>
       <ol>
         <li>
-          <Link href="/client">client only</Link>
+          <Link href="/client-only">client only</Link>
         </li>
         <li>
-          <Link href="/server">server only</Link>
+          <Link href="/server-only">server only</Link>
         </li>
         <li>
           <Link href="/server-action">server action</Link>
