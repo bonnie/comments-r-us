@@ -1,0 +1,6 @@
+.wrapper {
+  width: 100%;
+  height: var(--section-gap);
+  margin-top: var(--section-gap);
+  border-top: var(--separator-border);
+}
