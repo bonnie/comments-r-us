@@ -22,13 +22,15 @@ function Comment({ comment }: CommentProps) {
   }, [userId]);
 
   return (
-    <div className={styles.wrapper}>
-      <Card backgroundColor="white" textColor="var(--color-gray-11)">
+    <Card backgroundColor="white" textColor="var(--color-gray-11)">
+      <div className={styles.wrapper}>
         {user && <Avatar user={user} />}
-        <p className={styles.date}>{dayjs(createdAt).format("DD MMM")}</p>
-        <p className={styles.body}>{body}</p>
-      </Card>
-    </div>
+        <div className={styles.content}>
+          <p className={styles.date}>{dayjs(createdAt).format("DD MMM")}</p>
+          <p className={styles.body}>{body}</p>
+        </div>
+      </div>
+    </Card>
   );
 }
 

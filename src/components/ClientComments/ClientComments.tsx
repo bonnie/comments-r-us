@@ -26,7 +26,11 @@ function ClientComments({}: ClientCommentsProps) {
   }, []);
 
   if (status === "loading") {
-    return <Spinner />;
+    return (
+      <div style={{ width: "fit-content", margin: "1rem auto" }}>
+        <Spinner />
+      </div>
+    );
   }
 
   if (status === "error") {

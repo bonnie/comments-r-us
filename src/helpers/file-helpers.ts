@@ -20,6 +20,8 @@ export async function getAllCommentsSlow() {
 export async function addComment(body: string, userId: number) {
   const date = dayjs();
   const comments = await getAllComments();
+
+  // I'm lazy; the next line would be bad if you could delete comments
   const id = comments.length + 1;
   comments.push({ body, date, userId, id });
   await fs.writeFile(COMMENTS_FILE, JSON.stringify(comments), "utf-8");

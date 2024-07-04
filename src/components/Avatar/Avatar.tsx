@@ -1,6 +1,7 @@
 "use client";
 
 import * as Popover from "@radix-ui/react-popover";
+import dayjs from "dayjs";
 import { X } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -21,50 +22,26 @@ function Avatar({ user }: AvatarProps) {
     <div className={styles.wrapper}>
       <Popover.Root>
         <Popover.Trigger asChild>
-          <button className="IconButton" aria-label="Update dimensions">
+          <button aria-label="show details">
             <Image
               width={52}
               height={52}
               alt={`${name} avatar`}
               src={`/avatars/${imageName}`}
+              className={styles.iconButton}
             />
           </button>
         </Popover.Trigger>
         <Popover.Portal>
-          <Popover.Content className="PopoverContent" sideOffset={5}>
+          <Popover.Content className={styles.popoverContent} sideOffset={5}>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <p className="Text" style={{ marginBottom: 10 }}>
-                Dimensions
-              </p>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="width">
-                  Width
-                </label>
-                <input className="Input" id="width" defaultValue="100%" />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="maxWidth">
-                  Max. width
-                </label>
-                <input className="Input" id="maxWidth" defaultValue="300px" />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="height">
-                  Height
-                </label>
-                <input className="Input" id="height" defaultValue="25px" />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="maxHeight">
-                  Max. height
-                </label>
-                <input className="Input" id="maxHeight" defaultValue="none" />
-              </fieldset>
+              <p style={{ fontWeight: 700 }}>{name}</p>
+              <p>joined {dayjs(joinedAt).format("MMM DD, YYYY")}</p>
             </div>
-            <Popover.Close className="PopoverClose" aria-label="Close">
+            <Popover.Close className={styles.popoverClose} aria-label="Close">
               <X />
             </Popover.Close>
-            <Popover.Arrow className="PopoverArrow" />
+            <Popover.Arrow className={styles.popoverArrow} />
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>
