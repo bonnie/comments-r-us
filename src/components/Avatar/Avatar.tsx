@@ -36,7 +36,7 @@ function Avatar({ user }: AvatarProps) {
           <Popover.Content className={styles.popoverContent} sideOffset={5}>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <p style={{ fontWeight: 700 }}>{name}</p>
-              <p>joined {dayjs(joinedAt).format("MMM DD, YYYY")}</p>
+              <p>joined {dayjs(joinedAt).format("MMM D, YYYY")}</p>
             </div>
             <Popover.Close className={styles.popoverClose} aria-label="Close">
               <X />

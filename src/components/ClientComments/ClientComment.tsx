@@ -26,7 +26,7 @@ function Comment({ comment }: CommentProps) {
       <div className={styles.wrapper}>
         {user && <Avatar user={user} />}
         <div className={styles.content}>
-          <p className={styles.date}>{dayjs(createdAt).format("DD MMM")}</p>
+          <p className={styles.date}>{dayjs(createdAt).format("MMM D")}</p>
           <p className={styles.body}>{body}</p>
         </div>
       </div>
