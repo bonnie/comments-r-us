@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { getAllComments } from "@/helpers/file-helpers";
+import { getAllCommentsSlow } from "@/helpers/file-helpers";
 
 export async function GET() {
-  const comments = await getAllComments();
+  const comments = await getAllCommentsSlow();
   return NextResponse.json({ comments });
 }
