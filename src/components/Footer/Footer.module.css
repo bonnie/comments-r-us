@@ -1,0 +1,9 @@
+.wrapper {
+  margin-top: var(--section-gap);
+  border-top: var(--separator-border);
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

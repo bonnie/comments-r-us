@@ -6,9 +6,11 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new-component": "node scripts/new-component/src/index.js"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
     "next": "15.0.0-canary.53",
     "react": "19.0.0-rc.0",
@@ -18,8 +20,11 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "commander": "^12.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.0-canary.53",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "prettier": "^2.8.4",
     "typescript": "^5"
   }
 }

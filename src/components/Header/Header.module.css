@@ -1,0 +1,7 @@
+.wrapper {
+  font-size: 3rem;
+}
+
+.image {
+  transform: translateY(6px);
+}
