@@ -1,6 +1,5 @@
 .wrapper {
   display: grid;
-  place-content: center;
 
   width: 100%;
   padding: 16px;

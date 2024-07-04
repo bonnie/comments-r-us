@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import React from "react";
+import useSWR from "swr";
 
+import { User } from "@/types";
 import { Comment as CommentType } from "@/types";
 
 import Avatar from "../Avatar";
@@ -12,21 +14,23 @@ export interface CommentProps {
 }
 
 function Comment({ comment }: CommentProps) {
-  const [user, setUser] = React.useState();
   const { body, createdAt, userId } = comment;
+  console.log("CREATED AT", createdAt);
 
-  React.useEffect(() => {
-    fetch(`/api/users/${userId}`)
-      .then((response) => response.json())
-      .then((data) => setUser(data.user));
-  }, [userId]);
+  const { data: user } = useSWR<User>(`/api/users/${userId}`, (url: string) =>
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => data.user)
+  );
 
   return (
     <Card backgroundColor="white" textColor="var(--color-gray-11)">
       <div className={styles.wrapper}>
-        {user && <Avatar user={user} />}
+        {user !== undefined && <Avatar user={user} />}
         <div className={styles.content}>
-          <p className={styles.date}>{dayjs(createdAt).format("MMM D")}</p>
+          <p className={styles.date}>
+            {dayjs(createdAt).format("MMM D, H:mm")}
+          </p>
           <p className={styles.body}>{body}</p>
         </div>
       </div>

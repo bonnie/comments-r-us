@@ -43,7 +43,7 @@ const ClientForm = ({}: ClientFormProps) => {
 
   const handleSubmit: React.FormEventHandler = (event) => {
     event.preventDefault();
-    if (isLoadingUsers || isMutating) {
+    if (isLoadingUsers || isMutating || body.length === 0) {
       // don't allow submission until users are available and there's
       //   no submission currently in process.
       // a production app would give some feedback to the user here
@@ -52,6 +52,9 @@ const ClientForm = ({}: ClientFormProps) => {
     }
 
     trigger({ body, userId: getRandomUserId(users) });
+
+    // clear the input
+    setBody("");
   };
 
   return (
@@ -62,11 +65,11 @@ const ClientForm = ({}: ClientFormProps) => {
         onChange={(event) => setBody(event.target.value)}
       />
       <div className={styles.buttons}>
-        <Button type="reset" variant="outline">
-          start over
+        <Button type="reset" variant="outline" onClick={() => setBody("")}>
+          reset
         </Button>
         <Button type="submit">
-          {isLoadingUsers || isMutating ? "please wait" : "post comment"}
+          {isLoadingUsers || isMutating ? "working..." : "post"}
         </Button>
       </div>
     </form>

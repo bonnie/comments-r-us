@@ -15,13 +15,11 @@ function ClientComments({}: ClientCommentsProps) {
     data: comments,
     isLoading,
     error,
-  } = useSWR("/api/comments", () =>
-    fetch("/api/comments")
+  } = useSWR<Comment[]>("/api/comments", (url: string) =>
+    fetch(url)
       .then((res) => res.json())
       .then((data) => data.comments)
   );
-
-  console.log(comments, isLoading, error);
 
   if (isLoading) {
     return (
@@ -35,15 +33,17 @@ function ClientComments({}: ClientCommentsProps) {
     return <ErrorCard error={error} />;
   }
 
-  return (
-    <ol className={styles.wrapper}>
-      {comments.map((comment: Comment) => (
-        <li key={comment.id}>
-          <ClientComment comment={comment} />
-        </li>
-      ))}
-    </ol>
-  );
+  if (comments) {
+    return (
+      <div className={styles.wrapper}>
+        {comments.map((comment: Comment) => (
+          <ClientComment comment={comment} key={comment.id} />
+        ))}
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export default ClientComments;
