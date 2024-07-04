@@ -1,4 +1,5 @@
 import React from "react";
+import useSWR from "swr";
 
 import ErrorCard from "@/components/ErrorCard";
 import Spinner from "@/components/Spinner";
@@ -6,26 +7,23 @@ import { Comment } from "@/types";
 
 import ClientComment from "./ClientComment";
 import styles from "./ClientComments.module.css";
-type Status = "idle" | "loading" | "error";
 
 export interface ClientCommentsProps {}
 
 function ClientComments({}: ClientCommentsProps) {
-  const [comments, setComments] = React.useState<Comment[]>([]);
-  const [status, setStatus] = React.useState<Status>("idle");
-
-  React.useEffect(() => {
-    setStatus("loading");
+  const {
+    data: comments,
+    isLoading,
+    error,
+  } = useSWR("/api/comments", () =>
     fetch("/api/comments")
-      .then((response) => response.json())
-      .then((data: { comments: Comment[] }) => {
-        setComments(data.comments);
-        setStatus("idle");
-      })
-      .catch((e) => setStatus("error"));
-  }, []);
+      .then((res) => res.json())
+      .then((data) => data.comments)
+  );
 
-  if (status === "loading") {
+  console.log(comments, isLoading, error);
+
+  if (isLoading) {
     return (
       <div style={{ width: "fit-content", margin: "1rem auto" }}>
         <Spinner />
@@ -33,13 +31,13 @@ function ClientComments({}: ClientCommentsProps) {
     );
   }
 
-  if (status === "error") {
-    return <ErrorCard error="an error occurred" />;
+  if (error) {
+    return <ErrorCard error={error} />;
   }
 
   return (
     <ol className={styles.wrapper}>
-      {comments.map((comment) => (
+      {comments.map((comment: Comment) => (
         <li key={comment.id}>
           <ClientComment comment={comment} />
         </li>

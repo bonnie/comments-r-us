@@ -1,4 +1,6 @@
 import React from "react";
+import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 
 import { User } from "@/types";
 
@@ -16,30 +18,40 @@ const getRandomUserId = (users: User[]) => {
   return rando.id;
 };
 
+// for useSWRMutation
+async function sendRequest(
+  url: string,
+  { arg }: { arg: { body: string; userId: number } }
+) {
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify(arg),
+  });
+}
+
 const ClientForm = ({}: ClientFormProps) => {
   const [body, setBody] = React.useState("");
-  const [users, setUsers] = React.useState<User[]>([]);
 
-  React.useEffect(() => {
+  const { data: users, isLoading: isLoadingUsers } = useSWR("/api/users", () =>
     fetch("/api/users")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("DATA", data);
-        setUsers(data.users);
-      });
-  }, []);
+      .then((res) => res.json())
+      .then((data) => data.users)
+  );
 
-  // not handling loading/error status here
-  //   ... but that should be done for a complete solution
+  // invalidates and refetches "/api/comments" automatically
+  const { trigger, isMutating } = useSWRMutation("/api/comments", sendRequest);
+
   const handleSubmit: React.FormEventHandler = (event) => {
     event.preventDefault();
-    fetch("/api/comments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ body, userId: getRandomUserId(users) }),
-    });
+    if (isLoadingUsers || isMutating) {
+      // don't allow submission until users are available and there's
+      //   no submission currently in process.
+      // a production app would give some feedback to the user here
+      //   about why nothing's gonna happen
+      return;
+    }
+
+    trigger({ body, userId: getRandomUserId(users) });
   };
 
   return (
@@ -53,7 +65,9 @@ const ClientForm = ({}: ClientFormProps) => {
         <Button type="reset" variant="outline">
           start over
         </Button>
-        <Button type="submit">post comment</Button>
+        <Button type="submit">
+          {isLoadingUsers || isMutating ? "please wait" : "post comment"}
+        </Button>
       </div>
     </form>
   );
