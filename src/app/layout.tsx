@@ -23,6 +23,9 @@ export const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Comments R Us",
   description: "Your one-stop shop for comments",
+  icons: {
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
