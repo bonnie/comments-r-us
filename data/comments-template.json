@@ -1,1 +1,8 @@
-[{ "comment": "I love this article!", "date": "2024-07-02T23:09:29.832Z" }]
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "createdAt": "2024-07-02T23:09:29.832Z",
+    "body": "Is this thing on?"
+  }
+]

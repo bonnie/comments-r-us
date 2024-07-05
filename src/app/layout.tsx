@@ -7,6 +7,8 @@ import { Open_Sans, Rammetto_One } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
+import styles from "./layout.module.css";
+
 export const ramettoOne = Rammetto_One({
   subsets: ["latin"],
   weight: "400",
@@ -32,7 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(openSans.variable, ramettoOne.variable)}>
         <Header />
-        <main className="body-text">{children}</main>
+        <main className={clsx(styles.main, "body-text")}>{children}</main>
         <Footer />
       </body>
     </html>

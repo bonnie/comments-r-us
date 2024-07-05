@@ -1,0 +1,9 @@
+.wrapper li {
+  all: unset;
+  width: 100%;
+}
+
+.wrapper,
+.wrapper ol {
+  width: 100%;
+}

@@ -10,11 +10,14 @@
     "new-component": "node scripts/new-component/src/index.js"
   },
   "dependencies": {
+    "@radix-ui/react-popover": "^1.1.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
+    "lucide-react": "^0.400.0",
     "next": "15.0.0-canary.53",
     "react": "19.0.0-rc.0",
-    "react-dom": "19.0.0-rc.0"
+    "react-dom": "19.0.0-rc.0",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/node": "^20",

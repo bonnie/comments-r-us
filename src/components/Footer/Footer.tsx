@@ -6,13 +6,13 @@ import styles from "./Footer.module.css";
 const Footer = ({ ...delegated }: React.ComponentProps<"footer">) => {
   return (
     <footer className={clsx(styles.wrapper, "body-text")} {...delegated}>
-      <p>For more good stuff,</p>
       <p>
-        visit{" "}
+        Visit{" "}
         <a href="https://bonnie.dev" target="_blank">
           bonnie.dev
         </a>
       </p>
+      <p>for more good stuff</p>
     </footer>
   );
 };

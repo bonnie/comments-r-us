@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-elevation-medium);
+}
