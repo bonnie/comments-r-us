@@ -13,10 +13,10 @@ export default function Home() {
           <Link href="/2-server-only">server only</Link>
         </li>
         <li>
-          <Link href="/3-server-action">server action</Link>
+          <Link href="/3-suspense">suspense</Link>
         </li>
         <li>
-          <Link href="/4-suspense">suspense</Link>
+          <Link href="/4-server-action">server action</Link>
         </li>
         <li>
           <Link href="/5-server-actions-hooks">server actions with hooks</Link>

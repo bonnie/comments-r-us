@@ -23,11 +23,7 @@ function ClientComments({}: ClientCommentsProps) {
   );
 
   if (isLoading) {
-    return (
-      <div style={{ width: "fit-content", margin: "1rem auto" }}>
-        <Spinner />
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (error) {
@@ -37,11 +33,7 @@ function ClientComments({}: ClientCommentsProps) {
   if (comments) {
     return (
       <div className={styles.wrapper}>
-        {isValidating && (
-          <div style={{ width: "fit-content", margin: "1rem auto" }}>
-            <Spinner />
-          </div>
-        )}
+        {isValidating && <Spinner />}
         {comments.map((comment: Comment) => (
           <ClientComment comment={comment} key={comment.id} />
         ))}
