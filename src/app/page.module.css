@@ -7,3 +7,8 @@
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
+
+.wrapper a:active {
+  color: var(--color-olive-2);
+  background-color: var(--color-olive-12);
+}
