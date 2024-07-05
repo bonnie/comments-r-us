@@ -1,7 +1,5 @@
 import React from "react";
 
-import ErrorCard from "@/components/ErrorCard";
-import Spinner from "@/components/Spinner";
 import { getAllCommentsSlow } from "@/helpers/file-helpers";
 import styles from "@/styles/AllComments.module.css";
 import { Comment } from "@/types";
