@@ -2,3 +2,8 @@
   width: 100%;
   overflow-x: visible;
 }
+
+.wrapper li {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
