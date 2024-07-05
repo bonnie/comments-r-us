@@ -14,6 +14,7 @@ function ClientComments({}: ClientCommentsProps) {
   const {
     data: comments,
     isLoading,
+    isValidating,
     error,
   } = useSWR<Comment[]>("/api/comments", (url: string) =>
     fetch(url)
@@ -36,6 +37,11 @@ function ClientComments({}: ClientCommentsProps) {
   if (comments) {
     return (
       <div className={styles.wrapper}>
+        {isValidating && (
+          <div style={{ width: "fit-content", margin: "1rem auto" }}>
+            <Spinner />
+          </div>
+        )}
         {comments.map((comment: Comment) => (
           <ClientComment comment={comment} key={comment.id} />
         ))}

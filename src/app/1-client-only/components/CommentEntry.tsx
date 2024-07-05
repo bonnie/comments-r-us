@@ -3,15 +3,8 @@ import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
 import Button from "@/components/Button";
+import { getRandomUserId } from "@/helpers/user-helpers";
 import styles from "@/styles/CommentEntry.module.css";
-import { User } from "@/types";
-
-// just pass a random userID rather than having to log in
-//   or select from a dropdown
-const getRandomUserId = (users: User[]) => {
-  const rando = users[Math.floor(Math.random() * users.length)];
-  return rando.id;
-};
 
 // for useSWRMutation
 async function sendRequest(
@@ -24,7 +17,7 @@ async function sendRequest(
   });
 }
 
-const ClientForm = () => {
+function CommentEntry() {
   const [body, setBody] = React.useState("");
 
   const { data: users, isLoading: isLoadingUsers } = useSWR("/api/users", () =>
@@ -69,6 +62,6 @@ const ClientForm = () => {
       </div>
     </form>
   );
-};
+}
 
-export default ClientForm;
+export default CommentEntry;

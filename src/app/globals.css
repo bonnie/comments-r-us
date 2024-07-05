@@ -71,3 +71,15 @@ body {
   margin: 0 auto;
   overflow-x: visible;
 }
+
+a {
+  all: unset;
+  font-weight: 700;
+  transition: opacity 0.25s;
+}
+
+a:hover {
+  opacity: 0.6;
+  transition: opacity 0.25s;
+  cursor: pointer;
+}
