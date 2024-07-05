@@ -1,0 +1,14 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 100%;
+  border: 4px solid transparent;
+  transition: border-color 0.25s;
+}
+.iconButton:hover {
+  border-radius: 100%;
+  border-color: var(--color-olive-9);
+  transition: border-color 0.5s;
+}

@@ -2,12 +2,11 @@ import dayjs from "dayjs";
 import React from "react";
 import useSWR from "swr";
 
+import AvatarWithPopover from "@/components/AvatarWithPopover";
+import Card from "@/components/Card";
+import styles from "@/styles/Comment.module.css";
 import { User } from "@/types";
 import { Comment as CommentType } from "@/types";
-
-import Avatar from "../AvatarWithPopover";
-import Card from "../Card";
-import styles from "./ClientComment.module.css";
 
 export interface CommentProps {
   comment: CommentType;
@@ -25,7 +24,7 @@ function Comment({ comment }: CommentProps) {
   return (
     <Card backgroundColor="white" textColor="var(--color-gray-11)">
       <div className={styles.wrapper}>
-        {user !== undefined && <Avatar user={user} />}
+        {user !== undefined && <AvatarWithPopover user={user} />}
         <div className={styles.content}>
           <p className={styles.date}>
             {dayjs(createdAt).format("MMM D, H:mm")}

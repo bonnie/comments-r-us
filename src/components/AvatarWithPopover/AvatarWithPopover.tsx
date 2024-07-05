@@ -3,12 +3,12 @@
 import * as Popover from "@radix-ui/react-popover";
 import dayjs from "dayjs";
 import { X } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 
 import { User } from "@/types";
 
-import styles from "./Avatar.module.css";
+import AvatarImage from "../AvatarImage";
+import styles from "./AvatarWithPopover.module.css";
 
 export interface AvatarProps {
   user: User;
@@ -23,13 +23,7 @@ function Avatar({ user }: AvatarProps) {
       <Popover.Root>
         <Popover.Trigger asChild>
           <button aria-label="show details">
-            <Image
-              width={52}
-              height={52}
-              alt={`${name} avatar`}
-              src={`/avatars/${imageName}`}
-              className={styles.iconButton}
-            />
+            <AvatarImage user={user} />
           </button>
         </Popover.Trigger>
         <Popover.Portal>

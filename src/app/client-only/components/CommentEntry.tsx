@@ -2,14 +2,9 @@ import React from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
+import Button from "@/components/Button";
+import styles from "@/styles/CommentEntry.module.css";
 import { User } from "@/types";
-
-import Button from "../Button";
-import styles from "./ClientForm.module.css";
-export interface ClientFormProps {
-  fetchQuoteStyles: (incomingQuote?: string) => Promise<void>;
-  startOver: () => void;
-}
 
 // just pass a random userID rather than having to log in
 //   or select from a dropdown
@@ -29,7 +24,7 @@ async function sendRequest(
   });
 }
 
-const ClientForm = ({}: ClientFormProps) => {
+const ClientForm = () => {
   const [body, setBody] = React.useState("");
 
   const { data: users, isLoading: isLoadingUsers } = useSWR("/api/users", () =>
@@ -60,7 +55,7 @@ const ClientForm = ({}: ClientFormProps) => {
   return (
     <form className={styles.wrapper} onSubmit={handleSubmit}>
       <textarea
-        placeholder="Enter a quote..."
+        placeholder="Enter a comment..."
         value={body}
         onChange={(event) => setBody(event.target.value)}
       />
@@ -69,7 +64,7 @@ const ClientForm = ({}: ClientFormProps) => {
           reset
         </Button>
         <Button type="submit">
-          {isLoadingUsers || isMutating ? "working..." : "post"}
+          {isLoadingUsers || isMutating ? "" : "post"}
         </Button>
       </div>
     </form>
