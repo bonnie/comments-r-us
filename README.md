@@ -1,6 +1,14 @@
 # Comments R Us
 
-An app to support a talk about server components
+Code to support a talk about server components.
+
+This code shows the same app with variations in approach:
+
+1. Client components only
+2. Server components only
+3. Server components + suspense
+4. Server components + suspense + server actions
+5. Server components + suspense + server actions + useFormStatus hook
 
 ## Getting started:
 
