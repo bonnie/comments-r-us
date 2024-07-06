@@ -13,7 +13,6 @@ export default function ServerOnly() {
   return (
     <>
       <CommentEntry />
-      <Separator />
       <React.Suspense fallback={<Spinner />}>
         <AllComments />
       </React.Suspense>
