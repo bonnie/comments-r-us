@@ -2,24 +2,13 @@ import "./globals.css";
 
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Open_Sans, Rammetto_One } from "next/font/google";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { openSans, ramettoOne } from "@/fonts";
 
 import styles from "./layout.module.css";
 
-export const ramettoOne = Rammetto_One({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
-});
-
-export const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: "variable",
-  variable: "--font-sans",
-});
 export const metadata: Metadata = {
   title: "Comments R Us",
   description: "Your one-stop shop for comments",

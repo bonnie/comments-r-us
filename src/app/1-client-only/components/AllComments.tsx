@@ -4,19 +4,19 @@ import useSWR from "swr";
 import ErrorCard from "@/components/ErrorCard";
 import Spinner from "@/components/Spinner";
 import styles from "@/styles/AllComments.module.css";
-import { Comment } from "@/types";
+import { Comment as CommentType } from "@/types";
 
-import ClientComment from "./Comment";
+import Comment from "./Comment";
 
-export interface ClientCommentsProps {}
+export interface AllCommentsProps {}
 
-function ClientComments({}: ClientCommentsProps) {
+function AllComments({}: AllCommentsProps) {
   const {
     data: comments,
     isLoading,
     isValidating,
     error,
-  } = useSWR<Comment[]>("/api/comments", (url: string) =>
+  } = useSWR<CommentType[]>("/api/comments", (url: string) =>
     fetch(url)
       .then((res) => res.json())
       .then((data) => data.comments)
@@ -34,8 +34,8 @@ function ClientComments({}: ClientCommentsProps) {
     return (
       <div className={styles.wrapper}>
         {isValidating && <Spinner />}
-        {comments.map((comment: Comment) => (
-          <ClientComment comment={comment} key={comment.id} />
+        {comments.map((comment: CommentType) => (
+          <Comment key={comment.id} comment={comment} />
         ))}
       </div>
     );
@@ -44,4 +44,4 @@ function ClientComments({}: ClientCommentsProps) {
   return null;
 }
 
-export default ClientComments;
+export default AllComments;

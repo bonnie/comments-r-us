@@ -2,22 +2,22 @@ import React from "react";
 
 import { getAllCommentsSlow } from "@/helpers/file-helpers";
 import styles from "@/styles/AllComments.module.css";
-import { Comment } from "@/types";
+import { Comment as CommentType } from "@/types";
 
-import ClientComment from "./Comment";
+import Comment from "./Comment";
 
-export interface ClientCommentsProps {}
+export interface AllCommentsProps {}
 
-async function ClientComments({}: ClientCommentsProps) {
+async function AllComments({}: AllCommentsProps) {
   const comments = await getAllCommentsSlow();
 
   return (
     <div className={styles.wrapper}>
-      {comments.map((comment: Comment) => (
-        <ClientComment comment={comment} key={comment.id} />
+      {comments.map((comment: CommentType) => (
+        <Comment comment={comment} key={comment.id} />
       ))}
     </div>
   );
 }
 
-export default ClientComments;
+export default AllComments;
