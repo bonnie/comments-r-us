@@ -21,3 +21,4 @@ async function AllComments({}: AllCommentsProps) {
 }
 
 export default AllComments;
+export const dynamic = "force-dynamic";
