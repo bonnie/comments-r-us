@@ -10,7 +10,6 @@ function Loading() {
   // The useFormStatus Hook must be called from a component that is rendered inside a <form>.
   // reference: https://react.dev/reference/react-dom/hooks/useFormStatus
   const { pending } = useFormStatus();
-  console.log("PENDING", pending);
 
   if (pending) {
     return <Spinner />;

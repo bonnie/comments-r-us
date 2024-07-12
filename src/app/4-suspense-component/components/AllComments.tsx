@@ -14,7 +14,7 @@ async function AllComments({}: AllCommentsProps) {
   return (
     <div className={styles.wrapper}>
       {comments.map((comment: CommentType) => (
-        <Comment key={comment.id} comment={comment} />
+        <Comment comment={comment} key={comment.id} />
       ))}
     </div>
   );

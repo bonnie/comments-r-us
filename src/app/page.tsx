@@ -14,13 +14,16 @@ export default function Home() {
           <Link href="/2-server-only">server only</Link>
         </li>
         <li>
-          <Link href="/3-suspense">suspense</Link>
+          <Link href="/3-suspense-page">suspense (page)</Link>
         </li>
         <li>
-          <Link href="/4-server-action">server action</Link>
+          <Link href="/4-suspense-component">suspense (component)</Link>
         </li>
         <li>
-          <Link href="/5-server-actions-hooks">server actions with hooks</Link>
+          <Link href="/5-server-action">server action</Link>
+        </li>
+        <li>
+          <Link href="/6-server-actions-hooks">server actions with hooks</Link>
         </li>
       </ol>
       <div className={styles.qr}>

@@ -14,10 +14,9 @@ export default function ServerOnly() {
     <>
       <CommentEntry />
       <Separator />
-      {/* uncomment Suspense to stream AllComments when ready */}
-      {/* <React.Suspense fallback={<Spinner />}> */}
-      <AllComments />
-      {/* </React.Suspense> */}
+      <React.Suspense fallback={<Spinner />}>
+        <AllComments />
+      </React.Suspense>
     </>
   );
 }

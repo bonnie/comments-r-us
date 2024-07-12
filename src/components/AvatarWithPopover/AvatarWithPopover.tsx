@@ -10,12 +10,12 @@ import { User } from "@/types";
 import AvatarImage from "../AvatarImage";
 import styles from "./AvatarWithPopover.module.css";
 
-export interface AvatarProps {
+export interface AvatarWithPopoverProps {
   user: User;
 }
 
-function Avatar({ user }: AvatarProps) {
-  const { name, joinedAt, imageName } = user;
+function AvatarWithPopover({ user }: AvatarWithPopoverProps) {
+  const { name, joinedAt } = user;
 
   // reference: https://www.radix-ui.com/primitives/docs/components/popover
   return (
@@ -43,4 +43,4 @@ function Avatar({ user }: AvatarProps) {
   );
 }
 
-export default Avatar;
+export default AvatarWithPopover;
