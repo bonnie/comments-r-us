@@ -1,6 +1,6 @@
 "use client";
 
-// useFormStatus is experimental / canary as of July 5, 2024
+// useFormStatus is experimental / canary as of July 28, 2024
 // https://react.dev/reference/react-dom/hooks/useFormStatus
 import { useFormStatus } from "react-dom";
 
