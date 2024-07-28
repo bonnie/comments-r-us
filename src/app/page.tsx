@@ -23,7 +23,7 @@ export default function Home() {
           <Link href="/5-server-action">server action</Link>
         </li>
         <li>
-          <Link href="/6-server-actions-hooks">server actions with hooks</Link>
+          <Link href="/6-server-and-client">server and client</Link>
         </li>
       </ol>
       <div className={styles.qr}>
