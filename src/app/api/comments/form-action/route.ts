@@ -4,6 +4,7 @@ import { addComment } from "@/helpers/file-helpers";
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
+  const referer = request.headers.get("referer");
 
   const body = formData.get("body")?.toString() ?? "";
   const rawUserId = formData.get("userId")?.toString();
@@ -12,5 +13,5 @@ export async function POST(request: NextRequest) {
 
   await addComment(body, userId);
 
-  return NextResponse.redirect("http://localhost:3000/2-server-only");
+  return NextResponse.redirect(referer ?? "/");
 }
