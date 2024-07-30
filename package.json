@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
     "lucide-react": "^0.400.0",
-    "next": "^15.0.0-canary.87",
+    "next": "^15.0.0-canary.88",
     "react": "19.0.0-rc.0",
     "react-dom": "19.0.0-rc.0",
     "swr": "^2.2.5"
