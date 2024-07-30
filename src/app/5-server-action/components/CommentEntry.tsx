@@ -15,8 +15,6 @@ async function submitComment(formData: FormData) {
 
   if (body && userId) {
     await addComment(body, parseInt(userId));
-    // After hydration, the browser does not refresh on form submission.
-    // https://nextjs.org/docs/app/building-your-application/caching#server-action
 
     // "layout" revalidates any paths that use the layout at the level of the path
     //    i.e. descendants
